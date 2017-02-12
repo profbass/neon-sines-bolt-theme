@@ -1,0 +1,884 @@
+/*********************
+**********************
+**********************
+Imports
+**********************
+**********************
+*********************/
+@import "variables.less"; 
+@import "helpers.less";
+
+/*********************
+**********************
+**********************
+Colors Styles
+**********************
+**********************
+*********************/
+@light: #F7F7F7; 
+@dark: #23272d;
+@grey: #dbdbdb;
+@greylt: #e2e2e2; 
+@greydk: #353535; 
+@blue: #337ab7;
+@red: #e66454;
+@bluelt: #80DEEA;
+@purple: #BA68C8;
+@orange: #F8783B;
+@yellow: #f0ad4e;
+@green: #5cb85c; 
+@pink : rgb(247,136,136);
+
+//fonts
+@libre : Libre Baskerville;
+@opensans : 'Open Sans', sans-serif;
+@playfair: 'Playfair Display', serif;
+
+/*********************
+**********************
+**********************
+Globle Styles
+**********************
+**********************
+*********************/
+body, html {
+    width: 100%;
+    min-height: 100%;
+    font-family: @opensans;
+    background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/footer.jpg?id=18) !important;
+    background-position: fixed;
+    font-size: 16px;
+
+}
+body.admin-body{
+    background: @dark;
+}
+.container, body, html {
+    height: 100%;
+}
+
+h1{
+	font-family: @libre;
+}
+h2{
+	font-family: @playfair;
+	font-weight: 700;
+	.font-24();
+	letter-spacing: 0.1em;
+}
+h3{
+	font-weight: 300;
+}
+h4{
+	font-weight: 300;
+}
+p{
+	font-weight: 300;
+	line-height: 200%;
+	.font-16()
+}
+ul{
+	font-weight:300;
+}
+.box{
+	background: rgba(27, 27, 27, 0.8);
+	padding: 25px;
+	color: @grey;
+	border-left: 3px solid @pink;
+	.transition(all 0.15s ease-in-out);
+	&:hover{
+		background: @pink;
+	}
+}
+
+.border{
+	display: inline-block;
+	width: 30px;
+	border-bottom: 1px solid @greylt;
+}
+
+/*********************
+**********************
+**********************
+Helper styles
+**********************
+**********************
+*********************/
+
+// thing I want uppercase
+.text-upper,
+.panel-title,
+.nav-tabs>li>a,
+.table>thead>tr>th{
+	text-transform: uppercase; 
+}
+// turn off rounded corners 
+.btn,
+.breadcrumb,
+.form-control,
+.nav-tabs>li>a{
+	.border-radius(0); 
+}
+
+/*********************
+**********************
+**********************
+Buttons
+**********************
+**********************
+*********************/
+.btn-lg{
+	font-size:1em;
+	font-weight:600;
+	padding:15px 30px;
+}
+.btn-primary{
+	background: transparent;
+	border: 1px solid rgb(248, 124, 112);
+	color: rgb(135, 192, 146);
+	text-transform: uppercase; 
+	.transition(all 0.15s ease-in-out);
+	&:hover{
+		background: rgba(248, 124, 112, 0.5);
+		border: 1px solid rgba(248, 124, 112, 0.3);
+		color: @light; 
+	}
+}
+.btn-default{
+	background: transparent;
+	border: 1px solid @greylt;
+	color: @pink;
+	text-transform: uppercase; 
+	.transition(all 0.15s ease-in-out);
+	&:hover{
+		background: @pink;
+		border: @pink;
+		color: @light; 
+	}
+}
+/*********************
+**********************
+**********************
+Nav Styles
+**********************
+**********************
+*********************/
+#nav{
+	background: transparent;
+	.nav-fullscreen{
+		width: 100%;
+	display: block;
+	background: @pink;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	max-height: 0;
+	overflow: hidden;
+	.transition(max-height 0.5s ease);
+	&.open{
+		height: 100%;
+		max-height: 100vh;
+		ul{
+			height: 100vh;
+		}
+	}
+		body.mobile & {
+			display: block;
+		}
+		ul{
+			li{
+				a{
+
+				}
+			}
+		}
+	}
+	.nav-header{
+		color: #fff;
+	    position: fixed;
+	    right: 0;
+	    left: 0;
+	    z-index: 1030;
+	    min-height: 50px;
+		#nav-toggle{
+			color: rgba(255,255,255,0.7);
+			padding: 12px 0px;
+			z-index: 10000;
+			float: right;
+			cursor: pointer;
+			.nav-icon {
+			  	margin: 0.2em 1em;
+			  	width: 30px;
+			  	&.active:before {
+			  		.transform( translateY(12px) rotate(135deg) );
+				}
+				&.active:after {
+		  			.transform( translateY(-12px) rotate(-135deg) );
+		  		}
+		  		&:after, 
+				&:before,
+				& div {
+				  	background-color: #fff;
+				  	.border-radius(0px);
+				  	content: '';
+				  	display: block;
+				  	height: 5px;
+				  	margin: 7px 0;
+				  	.transition(all .2s ease-in-out);
+				}
+				&.active div{
+					.transform( scale(0) );
+				}
+			}
+		}
+		ul{
+			display: block;
+			margin:10px 0 0 0;
+			padding:0;
+			list-style: none;
+			li{
+				padding:10px 20px;
+			    display: inline-block;
+			    text-transform: uppercase;
+			    line-height: 24px;
+			    a{
+			    	color: @light;
+			    	.transition(all 0.5 ease-in-out);
+			    	&:hover{
+			    		text-decoration: none;
+			    	}
+			    }
+			}
+		}
+	}
+}
+	
+#nav-mobile{
+	width: 100%;
+	display: block;
+	//background: rgba(247,136,136, 0.9);
+	background: @pink;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	max-height: 0;
+	overflow: hidden;
+	.transition(max-height 0.5s ease);
+	&.open{
+		height: 100%;
+		max-height: 100vh;
+		ul{
+			height: 100vh;
+		}
+	}
+	h3{
+	    font-size: 4em;
+	    font-family: @opensans;
+	    color: @light;
+    	letter-spacing: .1em;
+	    text-transform: uppercase;
+	    margin-bottom: 35px;
+	    margin-top: 100px;
+	    font-weight: 700;
+	    @media (max-width: @screen-xs) {
+	    	margin-top: 70px;
+	    	font-size: 2.5em;
+	    }
+	    @media (min-width: @screen-xs) {
+    	    span{
+	    	    .transition(all 0.5s ease-in-out);
+	    	    .animation(neon-yellow 1.5s ease-in-out infinite alternate);
+	    	    &:hover{
+	    	    	.animation(neon-pink 1.5s ease-in-out infinite alternate); 
+	    	    }
+			}
+		}
+		@media (max-width: @screen-xs) {
+			span{
+					font-size: .9em;
+					text-shadow: 0 0 10px #fff,
+						0 0 20px  #fff,
+						0 0 30px  #fff,
+						0 0 40px  @yellow,
+						0 0 70px  @yellow,
+						0 0 80px  @yellow,
+						0 0 100px @yellow,
+						0 0 150px @yellow;
+			}
+		}
+    }
+	ul{
+		list-style: none;
+		display: block;
+		margin:0;
+		padding:0;
+		font-family: @opensans;
+		li{
+			margin: 0;
+			a{
+				color: @light;
+				padding: 20px;
+				border-bottom: 1px solid rgba(0,0,0,0.1);
+				font-size: 1.7em;
+				display: block;
+				//text-transform: uppercase;
+				@media (max-width: @screen-xs) {
+					font-size: 1.3em;
+					padding: 15px;
+				}
+			}
+		}
+	}
+}
+
+/*********************
+**********************
+**********************
+Tabs Styles
+**********************
+**********************
+*********************/
+.nav-tabs{
+	li{
+		a{
+			color: @greydk;
+			background: transparent !important;
+			border: 0 !important;
+			border-bottom: 1px solid #ddd !important;
+			&:hover{
+				color: @blue !important;
+				border-bottom: 2px solid @blue !important;
+			}
+		}
+	}
+	li.active{
+		a{
+			border: 0 !important;
+		    border-bottom: 2px solid @blue !important;
+		    color: @blue !important;
+			&:hover {
+			    border: none; 
+			    border-bottom: 2px solid @blue !important;
+			}
+		}	
+	}
+} 
+/*********************
+**********************
+**********************
+Form Styles
+**********************
+**********************
+*********************/
+// floating lable forms
+.styled-form{
+	.row{
+		padding: 10px;
+	}
+    fieldset {
+    	border: none;
+    	display: block;
+       	&.styled-input {
+        	position: relative;
+	       	label {
+		        color: #999;
+		        position: absolute;
+		        top: 0;
+		        left: 8px;
+		        font-size: 1.2em;
+		        font-weight: 500;
+		        .transition(all 0.15s ease-in-out);
+		        pointer-events: none;
+		    }
+	       	input[type="text"]:focus ~ label,
+	       	input[type="text"]:valid ~ label,
+	       	input[type="password"]:focus ~ label,
+	       	input[type="password"]:valid ~ label,
+	       	input[type="date"]:focus ~ label,
+	       	input[type="date"]:valid ~ label,
+	       	input[type="time"]:focus ~ label,
+	       	input[type="time"]:valid ~ label,
+	       	textarea:focus ~ label,
+	       	textarea:valid ~ label,
+	       	select:focus ~ label,
+	       	select:valid ~ label  {
+	        	top: -1.8rem;
+	        	left:0;
+	         	position: absolute;
+	        	font-size: 1em;
+	        	.transition(all 0.15s ease-in-out); 
+	        }
+	        input[type="text"]:valid ~ label,
+	        input[type="password"]:valid ~ label,
+	        input[type="date"]:valid ~ label,
+	        input[type="time"]:valid ~ label,
+	        textarea:valid ~ label,
+	        input.time-field:valid ~ label{
+	        	color: #999 !important;
+	        }
+	        i{
+	        	// position: absolute;
+	        	// right: 0;
+	        }
+	    }
+	    input[type="text"],
+	    input[type="password"],
+	    input[type="date"],
+	    input[type="time"] {
+	    	background: transparent;
+			margin-right: 0;
+    		width: 100%; 
+			.appearance(none);
+			.transition(all 0.2s ease-in-out);
+			.box-shadow(none);
+			.border-radius(0);
+			border: none;
+			border-bottom: 1px solid #CDCDCD;
+			padding: 0.3em 0.5em 0.2em 0.5em;
+			text-decoration: none;
+			outline: 0;
+			line-height: 1em;
+			margin: 0;
+			font-size: 1.4em;
+			font-weight: 300;
+			color: @light; 
+			&:focus {
+		    	border-bottom: @pink 1px solid;
+		    	background: transparent;
+		    	.appearance(none);
+				outline: 0;
+			}
+		}
+		// turns off auto fill color in webkit
+		input[type="text"]:-webkit-autofill,
+		input[type="password"]:-webkit-autofill,
+		textarea:-webkit-autofill,
+		input[type="text"]:-webkit-autofill:focus ,
+		input[type="password"]:-webkit-autofill:focus,
+		textarea:-webkit-autofill:focus   {
+		    //.box-shadow(0 0 0px 1000px @pink inset) !important;
+		    background: rgba(255,255,255,0) !important;
+		   .appearance(none) !important;
+		   .box-shadow(none) !important;
+		}
+    } // end fieldset
+	select{
+		background:transparent;
+		.appearance(none);
+		.border-radius(0);
+		.box-shadow(none);
+			padding: 0.3em 0.5em 0.2em 0.5em;
+		font-size: 1.2em;
+		font-weight: 400;
+		border:none;
+		border-bottom: 1px solid #CDCDCD;
+		background-clip: padding-box !important;
+		width:100%;
+		&:focus {
+	    	border-bottom: @pink 1px solid;
+	    }
+	}
+	textarea{
+		background:transparent;
+		.appearance(none);
+		.border-radius(0);
+		.box-shadow(none);
+			padding: 0.3em 0.5em 0.2em 0.5em;
+		font-size: 1.2em;
+		font-weight: 400;
+		border:none;
+		border: 1px solid @greylt;
+		background-clip: padding-box !important;
+		width:100%;
+		min-height: 120px;
+		font-weight: 300;
+		&:focus {
+	    	border-bottom: @pink 1px solid;
+	    }
+	}
+}
+
+/*********************
+**********************
+**********************
+Neon Animations
+**********************
+**********************/
+
+@keyframes neon-yellow {
+	from {
+	    text-shadow: 0 0 10px #fff,
+	               0 0 20px  #fff,
+	               0 0 30px  #fff,
+	               0 0 40px  @yellow,
+	               0 0 70px  @yellow,
+	               0 0 80px  @yellow,
+	               0 0 100px @yellow,
+	               0 0 150px @yellow;
+	  }
+	to {
+	    text-shadow: 0 0 5px #fff,
+	               0 0 10px #fff,
+	               0 0 15px #fff,
+	               0 0 20px @yellow,
+	               0 0 35px @yellow,
+	               0 0 40px @yellow,
+	               0 0 50px @yellow,
+	               0 0 75px @yellow;
+	}
+}
+@keyframes neon-red {
+	from {
+	    text-shadow: 0 0 10px #fff,
+	               0 0 20px  #fff,
+	               0 0 30px  #fff,
+	               0 0 40px  @red,
+	               0 0 70px  @red,
+	               0 0 80px  @red,
+	               0 0 100px @red,
+	               0 0 150px @red;
+	  }
+	to {
+	    text-shadow: 0 0 5px #fff,
+	               0 0 10px #fff,
+	               0 0 15px #fff,
+	               0 0 20px @red,
+	               0 0 35px @red,
+	               0 0 40px @red,
+	               0 0 50px @red,
+	               0 0 75px @red;
+	}
+}
+@keyframes neon-green {
+	from {
+	    text-shadow: 0 0 10px #fff,
+	               0 0 20px  #fff,
+	               0 0 30px  #fff,
+	               0 0 40px  @green,
+	               0 0 70px  @green,
+	               0 0 80px  @green,
+	               0 0 100px @green,
+	               0 0 150px @green;
+	  }
+	to {
+	    text-shadow: 0 0 5px #fff,
+	               0 0 10px #fff,
+	               0 0 15px #fff,
+	               0 0 20px @green,
+	               0 0 35px @green,
+	               0 0 40px @green,
+	               0 0 50px @green,
+	               0 0 75px @green;
+	}
+}
+@keyframes neon-pink {
+	from {
+	    text-shadow: 0 0 10px #fff,
+	               0 0 20px  #fff,
+	               0 0 30px  #fff,
+	               0 0 40px  @pink,
+	               0 0 70px  @pink,
+	               0 0 80px  @pink,
+	               0 0 100px @pink,
+	               0 0 150px @pink;
+	  }
+	to {
+	    text-shadow: 0 0 5px #fff,
+	               0 0 10px #fff,
+	               0 0 15px #fff,
+	               0 0 20px @pink,
+	               0 0 35px @pink,
+	               0 0 40px @pink,
+	               0 0 50px @pink,
+	               0 0 75px @pink;
+	}
+}
+
+/*********************
+**********************
+**********************
+Home Parallax / Glow Section
+**********************
+**********************/
+
+// top callout
+#home{
+	position: relative;
+	overflow: hidden;
+	//min-height: 1000px;
+	.nonparallax{
+    	background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/footer.jpg?id=18) fixed repeat;
+	    width: 100%;
+	    position: absolute;
+	    display: none;
+	    overflow: hidden;
+	}
+	.parallax-layer {
+		background-position: top center;
+	    background-size: 100% auto;
+	    background-repeat: repeat;
+	    height: 700px;
+	    position: absolute;
+	}
+	.parallax-layer.fixed{
+	    position: fixed;
+	}
+	#space-bg{
+    	background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/footer.jpg?id=18) fixed repeat;
+    	width: 100%;
+	}
+	#space{
+    	//background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/footer.jpg?id=18) fixed repeat;
+		//background: #28292B;
+	}
+	#paralax-2{
+	    width: 100%;
+	}
+	.title-mobile{
+		position:absolute;
+		h3{
+			line-height: 200%;
+		}
+	}
+	.title{
+	    color: #fff;
+	    text-align: center;
+	    h1{
+    	    font-size: 100px;
+    	    font-family: @opensans;
+	    	letter-spacing: .1em;
+    	    text-transform: uppercase;
+    	    margin-bottom: 35px;
+    	    font-weight: 700;
+    	    @media (min-width: @screen-xs) {
+	    	    span{
+		    	    .transition(all 0.5s ease-in-out);
+		    	    .animation(neon-yellow 1.5s ease-in-out infinite alternate);
+		    	    &:hover{
+		    	    	.animation(neon-pink 1.5s ease-in-out infinite alternate); 
+		    	    }
+				}
+			}
+			@media (max-width: @screen-xs) {
+				span{
+						font-size: .9em;
+						text-shadow: 0 0 10px #fff,
+							0 0 20px  #fff,
+							0 0 30px  #fff,
+							0 0 40px  @yellow,
+							0 0 70px  @yellow,
+							0 0 80px  @yellow,
+							0 0 100px @yellow,
+							0 0 150px @yellow;
+				}
+			}
+	    }
+	    h3{
+	    	font-size: 1.5em;
+	    	letter-spacing: .5em;
+	    	text-transform: uppercase;
+	    	margin-bottom: 35px;
+    	    @media (max-width: @screen-xs) {
+				font-size:1em;
+			}
+	    }
+	}
+	
+}
+
+
+/*********************
+**********************
+**********************
+Home page Content
+**********************
+**********************/
+
+// Site Wrapper
+#site-wrapper{
+ 	position: relative;
+    background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/footer.jpg?id=18) fixed repeat;
+ 	z-index: 98;
+    color: @light;
+    overflow: hidden;
+}
+
+//Bio
+#bio{
+	//background: url(http://www.neonsinesmusic.com/wp-content/uploads/2016/05/bg-home.jpg) fixed repeat;
+	//background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/neon-sines.jpg?id=664) fixed repeat;
+	background: url(http://www.neonsinesmusic.com/wp-content/uploads/2016/05/bg-home-1.jpg) fixed repeat;
+	background-size:cover;
+	background-position: 50% 0;
+	padding: 100px 0;
+	color: @grey;
+	 @media (max-width: @screen-xs) {
+		padding:30px 25px;
+		h2{
+			line-height: 130%;
+		}
+	}
+}
+
+//Events
+#events{
+	h1{
+		display: inline-block;
+		border-bottom: 1px solid rgba(255,255,255, 0.7);
+	}
+	.event-box{
+		background:@light;
+		overflow: hidden;
+		color: @dark;
+		.transition(all 0.15s ease-in-out);
+		&:hover{
+			background:@pink;
+			color: @light !important;
+			p{
+				color: @light;
+			}
+		}
+		h4{
+			font-weight: 300;
+			@media (max-width: @screen-xs) {
+				.font-14;
+				margin: 5px 0;
+				text-align: left;
+			}
+		}
+		h3{
+			font-weight: 300;
+		}
+		p{
+			display: block;
+			color: @pink;
+		}
+	}
+}
+ 
+// Lyla
+#music{
+	.lyla-callout{
+		background: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/pink_rice.png?id=671) fixed repeat;
+		.content{
+			color: @greydk;
+			padding: 70px;
+			@media (min-width: @screen-sm) {
+				padding: 30px;
+			}
+			@media (max-width: @screen-xs) {
+				padding: 40px;
+			}
+		}
+	}
+	.lyla-gun{
+		background-image: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/lyla-gun1.jpg);
+		//background-position: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 650px;
+		width: 100%;
+		@media (min-width: @screen-sm) {
+			height: 600px;
+		}
+		@media (max-width: @screen-xs) {
+			height: 350px;
+		}
+	}
+}
+
+// blog posts
+#posts{
+	background: #FCFCFC;
+	color: @greydk;
+	overflow: hidden;
+	.grey{
+		background: #f7f7f7;
+	}
+	.date{
+		.font-14();
+		display: inline-block;
+		border-bottom: 1px solid @greydk;
+		color: @greydk;
+		font-weight: 300;
+		margin: 30px 0;
+		text-align: center;
+	}
+	.post{
+		padding: 60px;
+		@media (min-width: @screen-lg) {
+			padding: 80px;
+		}
+		@media (max-width: @screen-xs) {
+			padding: 40px;
+		}
+
+	}
+}
+footer{
+	color: @greylt;
+	ul{
+		list-style: none;
+		padding:0;
+		margin:0;
+		line-height: 180%;
+		li{
+			a{
+				color: @pink;
+				&:hover{
+					color: @pink;
+				}
+			}
+		}
+	}
+	small{
+		display: block;
+	}
+	h4{
+		line-height: 200%;
+	}
+}
+
+// Contact Form 
+#contact{
+	@media (max-width: @screen-xs) {
+		padding: 20px;
+	}
+}
+
+//Photo Row
+#photos{
+	.photo{
+		min-height: 400px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		@media (max-width: @screen-xs) {
+			min-height: 300px;
+		}
+	}
+	.photo-1{
+		background-image: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/neon-sines.jpg?id=664);
+	}
+	.photo-2{
+		background-image: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/lyla-banks1.jpg?id=685);
+		
+	}
+	.photo-3{
+		background-image: url(http://www.neonsinesmusic.com/wp-content/uploads/2014/11/pix02_final.jpg?id=24);
+		
+	}
+}
+footer{
+	li{
+		line-height: 260%;
+	}
+	@media (max-width: @screen-xs) {
+		li{
+			a{
+				.font-20();
+			}
+		}
+	}
+}
+

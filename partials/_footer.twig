@@ -1,0 +1,84 @@
+<section id="photos">
+    <div class="row">
+        <div class="col-sm-4 photo photo-1"></div>
+        <div class="col-sm-4 photo photo-2"></div>
+        <div class="col-sm-4 photo photo-3"></div>
+    </div>
+</section>
+<footer>
+    <div class="row">
+        <div class="col-sm-4 padding-50">
+            <h2 class="margin-bottom-20 font-24">Booking</h2>
+            <span class="border margin-bottom-20"></span>
+            <h4 class="margin-bottom-40">
+                <small>Booking &amp; Management</small>
+                Lyla Banks
+                <small>303-817-4645</small>
+            </h4>
+            <h4>
+                <small>Webmaster</small>
+                Oliver Wolcott
+            </h4>
+        </div>
+        <div class="col-sm-4 padding-50">
+            <h2 class="margin-bottom-20 font-24">Connect</h2>
+            <span class="border margin-bottom-20"></span>
+            <ul>
+                <li><a href="https://www.facebook.com/neonsinesband/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                <li><a href="https://www.instagram.com/neon__sines/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                <li><a href="https://soundcloud.com/user-225806384" target="_blank"><i class="fa fa-soundcloud" aria-hidden="true"></i> Soundcloud</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4 padding-50">
+            <h2 class="margin-bottom-20 font-24">Links</h2>
+            <span class="border margin-bottom-20"></span>
+            {{ menu(
+                identifier = 'main',
+                template = 'partials/_sub_menu.twig',
+                params = {'withsubmenus': false, 'class': 'inline-list align-right'}
+            ) }}
+        </div>
+    </div>
+    {{ widgets('footer') }}
+</footer>
+
+<!-- Latest compiled and minified Bootsrtap -->
+<script src="{{ paths.theme }}js/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- App Compiled Script -->
+
+<script src="{{ paths.theme }}js/ns.min.js"></script>
+<!-- doc ready -->
+<script>
+    jQuery(document).ready(function($) {
+        // site application Instantiation
+        var app = new NeonSines();
+
+        // Parallax Plugin
+        var Parallax = new Parallaxy();
+
+        var 
+            $window = $(window),
+            $content = $('.content-section'),
+            $nav = $('#nav')  
+        ;
+         // scroll event
+        $window.scroll(function(el) {
+            $content.each(function(el){
+                // vars
+                var 
+                    $this = $(this),
+                    distance = $this.offset().top,
+                    colorClass = $this.attr('data-color')
+                ;
+                // action to add and remove color class
+                if ( $window.scrollTop() >= (distance) ) {
+                    $nav.addClass(colorClass);
+                } else if ( $window.scrollTop() <= distance ) {
+                    $nav.removeClass(colorClass);
+                }// end if
+            }); // end nav scroll colors
+        });// end scroll event
+        
+    });
+</script>

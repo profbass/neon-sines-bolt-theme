@@ -1,0 +1,132 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+	<section id="home" class="slide">
+	    <div class="nonparallax slide">&nbsp;</div>
+	    <div id="space-bg" class="parallax-layer fixed" data-speed="12">&nbsp;</div>
+	    <canvas id="space" class="parallax-layer fixed" data-speed="8">&nbsp;</canvas>
+	    <div id="paralax-2" class="parallax-layer fixed" data-speed="2">
+	    	<div class="title section">
+				<h1><span>NEON SINES</span></h1>
+				<h3>EAR FUNK TO SUCK YOUR SOUL</h3>
+				<a href="#bio" class="btn btn-primary btn-lg nav-link">LET'S DO THIS</a>
+			</div>
+	    </div>
+    	<div class="nonparallax title title-mobile section hidden-sm hidden-md hidden-lg">
+			<h1><span>NEON SINES</span></h1>
+			<h3>EAR FUNK TO <br>SUCK YOUR SOUL</h3>
+			<a href="#bio" class="btn btn-primary btn-lg nav-link">LET'S DO THIS</a>
+		</div>
+	</section>
+	<div id="site-wrapper">
+		<section id="bio">
+			<!-- Live Promo -->
+			<div class="row live">
+				<div class="col-sm-offset-2 col-sm-8">
+					<h2 class="font-32 margin-bottom-40">This Is The Story Of A Champion</h2>
+					<p>Some often say that timing is the key to life. For Neon Sines, a premiere Denver band that specializes in music blended from a vast array influences, this statement means everything. Composed of an eclectic mix of individuals who all embraced the common ambition of creating an amazingly fun and diverse band, Neon Sines was born through complete chance and spontaneity—a band ‘Blind Date’ more or less. Yet what began spontaneously one afternoon quickly developed into a unified, powerful force and The Recovery Act continues to gain recognition as a band of immense talent and unlimited potential.      </p>
+
+					<p class="box margin-top-20"> Each member of the group contributes a unique and valuable component to the success of band— <strong>Lyla Banks</strong> on Vocals, <strong>Christian Mockett</strong> on guitar, <strong>Tyler Olmsted</strong> on Bass, <strong>Adam Segalis</strong> on Drums, and <strong>Adam Williamson</strong> on Keyboards. With the perfect blend of crafty, yet accessible songwriting and superb musicianship, Neon Sines gains new fans on a daily basis and leaves old fans wanting more. The band is currently working on material for a new album and will be playing numerous shows in 2016.</p>
+				</div>
+			</div>	
+		</section>
+		<!-- Blog Posts -->
+		<section id="posts" data-color="light" class="content-section">
+			<div class="row">
+				{% setcontent entries = "entries/latest/3" %}
+				{% for entry in entries %}
+					<div class="col-sm-4 post grey">
+						<span class="date padding-bottom-15">{{ entry.datecreated|date("M y")}}</span>
+						<h2 class="font-34 margin-bottom-20">{{ entry.title }}</h2>
+						<p>{{ entry.teaser }}</p>
+						<a href="{{ entry.link }}" class="btn btn-default btn-lg margin-top-20">LEARN MORE</a>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+		<!-- Shows and Event -->
+		<section id="events" data-color="dark" class="content-section text-center padding-top-100 padding-bottom-100">
+			<h1 class="margin-top-0 padding-bottom-30 margin-bottom-70">Upcoming Shows</h1>
+			<div class="row">
+				<div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-left">
+					<!-- Event Date -->
+					{% setcontent events = "events/latest/10" %}
+					{% for event in events %}
+						<div class="row event-box margin-bottom-5 padding-top-20  padding-bottom-20">
+							<div class="col-sm-3">
+								<h4>{{ event.date|date("M d, Y") }}</h4>
+							</div>
+							<div class="col-sm-9">
+								<h3 class="margin-0 font-20 padding-top-10">{{ event.location }}</h3> 
+								<p class="margin-0 font-16">{{ event.info }}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+		<!-- Lyla -->
+		<section id="music">
+			<div class="row lyla-callout">
+				<div class="col-sm-4 pic">
+					<!-- <img src="http://www.neonsinesmusic.com/wp-content/uploads/2014/11/lyla-gun1.jpg?id=690" class="img-responsive" > -->
+					<div class="lyla-gun">&nbsp;</div>
+				</div>
+				<div class="col-sm-8 content">
+					<h2 class="margin-bottom-20 font-32">Only One Way To Know</h2>
+					<span class="date"></span>
+					<p>Stop staring at your computer and check out our latest track, Screens. Your can't record my touch. </p>
+					<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270262074&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+				</div>
+			</div>
+		</section>
+		<section id="contact" class="margin-top-40 margin-bottom-40">
+			<div class="row">
+				<div class="col-sm-offset-3 col-sm-6">
+					<h3 class="box">SEND US A MESSAGE</h3>
+					<form role="form" method="post" id="rsvpForm" action="/submit-rsvp" class="styled-form margin-top-30">
+		                <div class="row">
+		                    <div class="col-sm-6 margin-bottom-35">
+		                        <fieldset class="styled-input">
+		                            <input id="fName" required="required" type="text" name="firstNameInput">
+		                            <label for="fName">Name </label>
+		                        </fieldset>
+		                    </div>
+		                    <div class="col-sm-6 margin-bottom-35">
+		                        <fieldset class="styled-input">
+		                            <input id="title" required="required" type="text" name="emailInput">
+		                            <label for="title">Email Address </label>
+		                        </fieldset>
+		                    </div>
+		                </div>
+		                <div class="row">
+		                    <div class="col-sm-12 margin-bottom-35">
+		                    	<fieldset class="styled-input">
+		                            <textarea id="Message" required="required" type="text" name="message"></textarea>
+		                            <label for="fName">Message </label>
+		                        </fieldset>
+		                    </div>
+		                </div>
+		                <div class="row">
+		                    <div class="col-sm-6 margin-bottom-35">
+		                        <button type="submit" class="btn btn-lg btn-primary" >Submit <i class="fa fa-chevron-right" aria-hidden="true"></i></span></button>
+		                    </div>
+		                </div>
+		            </form>
+		        </div>
+		    </div>
+		</section>
+
+   {#  <h1>{{ record.title }}</h1>
+    {{ include('partials/_fresh_install.twig') }}
+
+    {{ record.teaser }}
+
+    {{ popup(record.image, 1200, 500) }}
+
+    {{ record.body }}
+
+    {{ include('partials/_recordfooter.twig', { 'record': record }) }} #}
+
+{% endblock main %}

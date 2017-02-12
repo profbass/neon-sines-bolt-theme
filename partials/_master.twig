@@ -1,0 +1,122 @@
+{% set main_width = theme.layout.main_width|default(8) %}
+{% set aside_width = theme.layout.aside_width|default(4) %}
+<!doctype html>
+<html class="no-js" lang="{{ htmllang() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {# make sure we always display a proper title: The record's title if there is one, appended with the
+           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ app.config.get('general/sitename') -}}
+            {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+        </title>
+        <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400italic,700|Open+Sans:300,400,600,700|Playfair+Display' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ paths.theme }}css/ns.min.css">
+        {% block headincludes %}
+        {% endblock headincludes %}
+    </head>
+    <body>
+        {% block body %}
+            <div id="nav-mobile" class="nav-fullscreen">
+                <div class="container">
+                    <h3 class="text-center"><span>NEON SINES</span></h3>
+                     <div class="row">
+                        <div class="col-xs-offset-3 col-xs-7 col-sm-offset-4 col-sm-4 text-center">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <ul id="navMain">
+                                <li><a href="#bio"><span>Our Story</span></a></li>
+                                <li><a href="#posts"><span>News</span></a></li>
+                                <li><a href="#events"><span>Shows &amp; Events</span></a></li>
+                                <li><a href="#music"><span>Playlist</span></a></li>
+                                <li><a href="#contact"><span>Contact Us</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div id="nav">
+            <div class="nav-header">
+                <div id="nav-toggle">
+                    <div class="nav-icon">
+                        <div></div>
+                    </div>
+                </div>
+                <ul class="pull-right hidden-xs">
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/neonsinesband/">
+                            <i class="fa fa-facebook" title="Facebook"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.instagram.com/neon__sines/">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="www.soundcloud.com">
+                            <i class="fa fa-soundcloud" title="Soundcloud"></i>
+                            Soundcloud
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        {% block main %}
+        {% endblock main %}
+
+
+            {# {% if theme.layout.variant != 'wide' %}
+                <div class="row">
+            {% endif %}
+
+            {{ include('partials/_topbar.twig') }}
+            {{ include('partials/_header.twig') }}
+
+            {% if theme.layout.variant != 'wide' %}
+                </div>
+            {% endif %}
+
+            <div class="row">
+
+                {% if theme.layout.aside == "left" %}
+                    {{ include('partials/_aside.twig') }}
+                {% endif %}
+
+                <div class="{% if theme.layout.aside not in ['left', 'right'] %}large-centered{% endif %} large-{{ main_width }} columns">
+
+                    {{ widgets('main_top') }}
+
+                    {% block main %}
+                    {% endblock main %}
+
+                    {{ widgets('main_bottom') }}
+
+                </div>
+
+                {% if theme.layout.aside == "right" %}
+                    {{ include('partials/_aside.twig') }}
+                {% endif %}
+
+            </div> #}
+
+        {% endblock body %}
+
+        {{ include('partials/_footer.twig') }}
+
+        {% block bottomincludes %}
+        {% endblock bottomincludes %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+<h1><a href="{{ event.link }}">{{ event.location }}</a></h1>
+
+
+{% endblock main %}
