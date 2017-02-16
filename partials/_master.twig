@@ -13,13 +13,21 @@
                 {{ app.config.get('general/sitename') -}}
             {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
         </title>
+        {# Facebook Meta #}
+        <meta property="og:url"                content="http://www.neonsinesmusic.com/" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="| Neon Sines |" />
+        <meta property="og:description"        content="Ear funk to suck your soul" />
+        <meta property="og:image"              content="http://www.neonsinesmusic.com/theme/neonsines/images/neon-sines.jpg" />
+        {# Google Fonts #}
         <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400italic,700|Open+Sans:300,400,600,700|Playfair+Display' rel='stylesheet' type='text/css'>
-
+        {# Favicon #}
         <link rel="icon" type="image/x-icon" href="{{ paths.theme }}images/favicon.ico">
-
+        {# Styles #}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ paths.theme }}css/ns.min.css">
+        {# Header Includes #}
         {% block headincludes %}
         {% endblock headincludes %}
     </head>
