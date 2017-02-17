@@ -40,7 +40,8 @@
 						<div class="col-sm-4 post grey">
 							<span class="date padding-bottom-15">{{ entry.datecreated|date("M y")}}</span>
 							<h2 class="font-34 margin-bottom-20">{{ entry.title }}</h2>
-							<p>{{ entry.teaser }}</p>
+							<p>{{ entry.teaser|striptags[:150] ~ '...' }}</p>
+							{# {{ entry.teaser|length > 200 ? entry.teaser|striptags|slice(0, 200) ~ '...' : entry.teaser  }} #}
 							<a href="{{ entry.link }}" class="btn btn-default btn-lg margin-top-20">LEARN MORE</a>
 						</div>
 					{% endfor %}

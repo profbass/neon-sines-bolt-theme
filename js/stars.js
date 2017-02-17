@@ -4,7 +4,7 @@ var screenH;
 var screenW;
 var stars = [];
 var fps = 50;
-var numStars = 1000;
+var numStars = 3000; 
 
 $('document').ready(function() {
   
