@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         uglify:{
              ns: {
                 files: {
-                  'js/ns.min.js': ['js/app.js','js/stars.js','js/parallax.js']
+                  'js/ns.min.js': ['js/app.js']
                 },
                 options: {
                   mangle: false

@@ -1,0 +1,37 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    {# Include Header #}
+    {{ include('partials/_nav_logo.twig') }}
+    <div id="page-header" style="background-image:url({{ image(entry.image) }});" >
+        <h1 class="title text-center"><span>{{ entry.title }}</span></h3>
+    </div>
+    <div id="entry" class="paper padding-top-50 padding-bottom-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <span class="date margin-left-15">{{ entry.datepublish|date("M, d") }}</span>
+                    <h2>{{ entry.title }}</h2>
+                    <h3><small>by {{ entry.templatefields.user.displayname }} </small></h3>
+                    <hr>
+                   {#  {{ dump(entry) }} #}
+
+                    {{ entry.body }}
+
+                    {# If there are repeaters, we should output them. #}
+                    {{ fields(common = false, extended = false, repeaters = true) }}
+
+                    {# Uncomment this if you wish to dump the entire entry to the client, for debugging purposes.
+                    {{ dump(entry) }}
+                    #}
+                </div>
+                <div class="col-sm-4 sidebar">
+                    {{ include('partials/_aside.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock main %}

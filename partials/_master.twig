@@ -34,6 +34,7 @@
     </head>
     <body>
         {% block body %}
+            {# Expanded Nav #}
             <div id="nav-mobile" class="nav-fullscreen">
                 <div class="container">
                     <h3 class="text-center"><span>NEON SINES</span></h3>
@@ -54,81 +55,18 @@
                     </div>
                 </div>
             </div>
+            {# Main Content Block #}
+            {% block main %}
+            {% endblock main %}
 
-        <div id="nav">
-            <div class="nav-header">
-                <div id="nav-toggle">
-                    <div class="nav-icon">
-                        <div></div>
-                    </div>
-                </div>
-                <ul class="pull-right hidden-xs">
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/neonsinesband/">
-                            <i class="fa fa-facebook" title="Facebook"></i>
-                            Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://www.instagram.com/neon__sines/">
-                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                            Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="www.soundcloud.com">
-                            <i class="fa fa-soundcloud" title="Soundcloud"></i>
-                            Soundcloud
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        {% block main %}
-        {% endblock main %}
-
-
-            {# {% if theme.layout.variant != 'wide' %}
-                <div class="row">
-            {% endif %}
-
-            {{ include('partials/_topbar.twig') }}
-            {{ include('partials/_header.twig') }}
-
-            {% if theme.layout.variant != 'wide' %}
-                </div>
-            {% endif %}
-
-            <div class="row">
-
-                {% if theme.layout.aside == "left" %}
-                    {{ include('partials/_aside.twig') }}
-                {% endif %}
-
-                <div class="{% if theme.layout.aside not in ['left', 'right'] %}large-centered{% endif %} large-{{ main_width }} columns">
-
-                    {{ widgets('main_top') }}
-
-                    {% block main %}
-                    {% endblock main %}
-
-                    {{ widgets('main_bottom') }}
-
-                </div>
-
-                {% if theme.layout.aside == "right" %}
-                    {{ include('partials/_aside.twig') }}
-                {% endif %}
-
-            </div> #}
-
+        {# End Body Block #}
         {% endblock body %}
-
+        {# footer include #}
         {{ include('partials/_footer.twig') }}
-
+        {# Script includes #}
         {% block bottomincludes %}
         {% endblock bottomincludes %}
+        {# GA Scripts #}
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

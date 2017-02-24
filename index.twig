@@ -1,7 +1,10 @@
 {% extends 'partials/_master.twig' %}
 
-{% block main %}
 
+{% block main %}
+	{# Include Header #}
+	{{ include('partials/_nav_transparent.twig') }}
+	{# Homepage Parallax #}
 	<section id="home" class="slide">
 	    <div class="nonparallax slide">&nbsp;</div>
 	    <div id="space-bg" class="parallax-layer fixed" data-speed="12">&nbsp;</div>
@@ -80,10 +83,18 @@
 					<div class="lyla-gun">&nbsp;</div>
 				</div>
 				<div class="col-sm-8 content">
-					<h2 class="margin-bottom-20 font-32">Only One Way To Know</h2>
-					<span class="date"></span>
-					<p>Stop staring at your computer and check out our latest track, Screens. You can't record my touch. </p>
-					<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270262074&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+					<h2 class="font-32">Sounds from the Sine</h2>
+					<p>&nbsp;</p>
+					<div class="row">
+						<div class="col-sm-10">
+							{# Screens #}
+							<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/309271660%3Fsecret_token%3Ds-R1W3l&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+							{# Lenscrafter #}
+							<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/309271402%3Fsecret_token%3Ds-rU2eu&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+							{# Start The Fire #}
+							<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/309272339%3Fsecret_token%3Ds-YEv83&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -136,3 +147,17 @@
     {{ include('partials/_recordfooter.twig', { 'record': record }) }} #}
 
 {% endblock main %}
+
+{# Script Includes #}
+{% block bottomincludes %}
+	<script src="{{ paths.theme }}js/stars.js"></script>
+	<script src="{{ paths.theme }}js/parallax.js"></script>
+
+	<script>
+    jQuery(document).ready(function($) {
+        // Parallax Plugin
+        var Parallax = new Parallaxy();
+    });
+</script>
+
+{% endblock bottomincludes %}

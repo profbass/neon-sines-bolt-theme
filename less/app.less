@@ -70,7 +70,11 @@ h3{
 	font-weight: 300;
 }
 h4{
-	font-weight: 300;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+a{
+	color: @pink;
 }
 p{
 	font-weight: 300;
@@ -96,7 +100,9 @@ ul{
 	width: 30px;
 	border-bottom: 1px solid @greylt;
 }
-
+.paper{
+	background: #FCFCFC;
+}
 /*********************
 **********************
 **********************
@@ -165,23 +171,30 @@ Nav Styles
 *********************/
 #nav{
 	background: transparent;
-	.nav-fullscreen{
-		width: 100%;
-	display: block;
-	background: @pink;
-	position: fixed;
-	top: 0;
-	z-index: 999;
-	max-height: 0;
-	overflow: hidden;
-	.transition(max-height 0.5s ease);
-	&.open{
-		height: 100%;
-		max-height: 100vh;
-		ul{
-			height: 100vh;
+	&.bg-dark{
+		.nav-header{
+			background: url(../images/footer.jpg) fixed repeat !important;  
+			overflow: hidden;
 		}
 	}
+	.nav-fullscreen{
+		width: 100%;
+		display: block;
+		background: @pink;
+		position: fixed;
+		top: 0;
+		z-index: 999;
+		max-height: 0;
+		overflow: hidden;
+		.transition(max-height 0.5s ease);
+
+		&.open{
+			height: 100%;
+			max-height: 100vh;
+			ul{
+				height: 100vh;
+			}
+		}
 		body.mobile & {
 			display: block;
 		}
@@ -363,6 +376,117 @@ Tabs Styles
 		}	
 	}
 } 
+/*********************
+**********************
+**********************
+Logo Header Styles
+**********************
+**********************
+*********************/
+#page-header{
+	height: 60vh;
+	overflow: hidden;
+	background-position: center center;
+    background-size: cover;
+    background-repeat: none;
+    .title{
+    	margin: 0;
+    	position: relative;
+    	top: 30vh;
+    	color: @light;
+    	font-family: @opensans;
+    	text-transform: uppercase;
+    	font-weight: 700;
+    	font-size: 4rem;
+    	margin: 0 50px;
+    	.text-shadow(1px 1px rgba(0,0,0,0.5));
+    }
+}
+.sidebar{
+	border-left: 1px solid #ebebeb;
+	h4{
+
+	}
+	ul{
+		list-style: none;
+		margin: 0;
+		padding:0;
+		li{
+			margin: 0;
+			padding:0;
+			a{
+				padding:15px 0;
+				display: block;
+				border-bottom: 1px solid #ebebeb;
+				color: @dark;
+				i{
+					color:@pink;
+				}
+				&:hover{
+					color:@pink;
+				}
+			}
+		}
+	}
+	small{
+		text-transform: uppercase;
+	}
+}
+.parallax-layer {
+	background-position: top center;
+    background-size: 100% auto;
+    background-repeat: repeat;
+    height: 700px;
+    position: absolute;
+}
+.parallax-layer.fixed{
+    position: fixed;
+}
+.logo{
+	h3{ 
+	   	font-size: 2.5em;
+	    font-family: @opensans;
+	    color: @light;
+    	letter-spacing: .1em;
+	    text-transform: uppercase;
+	    margin: 15px;
+	    font-weight: 700;
+	    @media (max-width: @screen-xs) {
+	    	margin-top: 70px;
+	    	font-size: 2.5em;
+	    }
+	    @media (min-width: @screen-xs) {
+    	    span,a{
+	    	    .transition(all 0.5s ease-in-out);
+	    	    .animation(neon-yellow 1.5s ease-in-out infinite alternate);
+	    	    &:hover{
+	    	    	.animation(neon-pink 1.5s ease-in-out infinite alternate); 
+	    	    }
+			}
+		}
+		@media (max-width: @screen-xs) {
+			span,a{
+					font-size: .9em;
+					text-shadow: 0 0 10px #fff,
+						0 0 20px  #fff,
+						0 0 30px  #fff,
+						0 0 40px  @yellow,
+						0 0 70px  @yellow,
+						0 0 80px  @yellow,
+						0 0 100px @yellow,
+						0 0 150px @yellow;
+			}
+		}
+		a{
+			color: @light;
+			text-decoration: none;
+		}
+    }
+}
+
+
+
+
 /*********************
 **********************
 **********************
@@ -776,10 +900,10 @@ Home page Content
 		//background-position: cover;
 		background-size: cover;
 		background-repeat: no-repeat;
-		height: 650px;
-		width: 100%;
+		height: 700px;
+		width: 100%; 
 		@media (min-width: @screen-sm) {
-			height: 600px;
+			height: 700px;
 		}
 		@media (max-width: @screen-xs) {
 			height: 350px;
@@ -788,20 +912,21 @@ Home page Content
 }
 
 // blog posts
+.date{
+	.font-14();
+	display: inline-block;
+	border-bottom: 1px solid @greydk;
+	color: @greydk;
+	font-weight: 300;
+	text-align: center;
+	padding-bottom:20px;
+}
 #posts{
 	background: #FCFCFC;
 	color: @greydk;
 	overflow: hidden;
 	background: #f7f7f7;
-	.date{
-		.font-14();
-		display: inline-block;
-		border-bottom: 1px solid @greydk;
-		color: @greydk;
-		font-weight: 300;
-		margin: 30px 0;
-		text-align: center;
-	}
+	
 	.post{
 		padding: 60px;
 		@media (min-width: @screen-lg) {
